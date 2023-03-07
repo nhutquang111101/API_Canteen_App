@@ -6,7 +6,7 @@ var bodyParser = require("body-parser");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
 const accountRoute =  require("./router/account");
-
+const roleRoute =  require("./router/role");
 
 dotenv.config();
 //connect DATABASE
@@ -23,7 +23,10 @@ mongoose.connect((process.env.MONGODB_URL))
 app.use(bodyParser.json({limit: "50mb"}));
 app.use(cors());
 app.use(morgan("common"));
+
+//router
 app.use("/signup/account", accountRoute);
+app.use("/v1/role", roleRoute);
 
 
 app.listen(8000, ()=>{

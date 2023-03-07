@@ -5,6 +5,8 @@ const mongoose = require("mongoose");
 var bodyParser = require("body-parser");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
+const accountRoute =  require("./router/account");
+
 
 dotenv.config();
 //connect DATABASE
@@ -21,6 +23,7 @@ mongoose.connect((process.env.MONGODB_URL))
 app.use(bodyParser.json({limit: "50mb"}));
 app.use(cors());
 app.use(morgan("common"));
+app.use("/signup/account", accountRoute);
 
 
 app.listen(8000, ()=>{

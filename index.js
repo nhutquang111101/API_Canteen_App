@@ -5,8 +5,8 @@ const mongoose = require("mongoose");
 var bodyParser = require("body-parser");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
-const accountRoute =  require("./router/account");
-const roleRoute =  require("./router/role");
+
+const route = require("./router");
 
 dotenv.config();
 //connect DATABASE
@@ -25,8 +25,7 @@ app.use(cors());
 app.use(morgan("common"));
 
 //router
-app.use("/signup/account", accountRoute);
-app.use("/v1/role", roleRoute);
+route(app);
 
 
 app.listen(8000, ()=>{

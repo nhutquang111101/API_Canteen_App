@@ -32,9 +32,15 @@ const accountController = {
                 phone: req.body.phone,
                 password:  req.body.password,
                 verificationCode: verificationCode,
+                role: [
+                  '64060bc2eb16c61cca11b050'
+                ]
             });
+
+          
             
             await newAccount.save();
+            
 
             // Gửi email xác thực OTP đến email của người dùng
             const transporter = nodemailer.createTransport({
@@ -96,6 +102,18 @@ const accountController = {
             console.log(error);
             res.status(500).json({ message: 'Lỗi xác thực OTP' });
           }
+    },
+
+    //Login account
+    login: async(req, res)=>{
+      let account = await Account.findOne({ username: req.body.username, password: req.body.password});
+        if (!account) {
+        return res.status(400).send('Thông Tin đăng Nhập Sai...!!!');
+      }else{
+        // res.json.body("Đăng Nhập Thành Công ......!!!");
+
+        return res.status(200).json("Đăng Nhập Thành Công.....!!!");
+      }
     }
 };
 

@@ -8,4 +8,7 @@ router.post('/', accountController.signup);
 // Xác thực OTP
 router.post('/verify', accountController.confirmotp);
 
+//login
+router.post('/login', accountController.login);
+
 module.exports = router;

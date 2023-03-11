@@ -18,15 +18,15 @@ const roleController = {
     },
 
     //get all author controller
-    // getAllAuthor: async(req, res)=>{
-    //     try{
-    //         const authors = await Author.find();
-    //         res.status(200).json(authors);
-    //     }
-    //     catch(err){
-    //         res.status(500).json(err);
-    //     }
-    // },
+    getAllRole: async(req, res)=>{
+        try{
+            const roles = await Role.find();
+            res.status(200).json(roles);
+        }
+        catch(err){
+            res.status(500).json(err);
+        }
+    },
 
     // //get an author
     // getAnAuthor: async(req, res)=>{

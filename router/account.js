@@ -11,4 +11,4 @@ router.post('/verify', accountController.confirmotp);
 //login
 router.post('/login', accountController.login);
 
-module.exports = router;
+module.exports = router; 

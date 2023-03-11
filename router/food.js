@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const foodController = require("../controller/foodController");
 const upload = require("../middleware/upload");
 
@@ -17,9 +16,5 @@ router.post("/order", foodController.orderFood);
 
 // //delete  book
 // router.delete("/:id", bookController.deleteBook);
-=======
-const express = require('express');
-const router = express.Router();
->>>>>>> dev-phminhco
 
 module.exports = router;

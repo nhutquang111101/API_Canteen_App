@@ -5,12 +5,17 @@ const mongoose = require("mongoose");
 var bodyParser = require("body-parser");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
+<<<<<<< HEAD
 const path = require("path");
 const accountRoute =  require("./router/account");
 const roleRoute =  require("./router/role");
 const categoryRoute =  require("./router/category");
 const foodRoute =  require("./router/food");
 const billRoute =  require("./router/bill");
+=======
+
+const route = require("./router");
+>>>>>>> dev-phminhco
 
 dotenv.config();
 //connect DATABASE
@@ -29,6 +34,7 @@ app.use(cors());
 app.use(morgan("common"));
 
 //router
+<<<<<<< HEAD
 app.use(
   "/uploads",
   express.static(path.join(__dirname, "uploads"))
@@ -39,6 +45,9 @@ app.use("/v1/category", categoryRoute);
 app.use("/v1/food", foodRoute);
 app.use("/v1/bill", billRoute);
 
+=======
+route(app);
+>>>>>>> dev-phminhco
 
 
 app.listen(8000, ()=>{

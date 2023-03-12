@@ -4,8 +4,8 @@ const router = require("express").Router();
 
 
 //add author
-router.post("/addcate", categoryController.addCategory);
+router.post("/addcategory", categoryController.addCategory);
 
-router.get("/getallcate", categoryController.getAllCategory);
+router.get("/getallcategory", categoryController.getAllCategory);
 
 module.exports = router;

@@ -1,11 +1,12 @@
-const accountRoute =  require("./router/account");
-const roleRoute =  require("./router/role");
+const accountRoute =  require("./account");
+// const roleRoute =  require("./router/role");
 const path = require("path");
-const accountRoute =  require("./router/account");
-const roleRoute =  require("./router/role");
-const categoryRoute =  require("./router/category");
-const foodRoute =  require("./router/food");
-const billRoute =  require("./router/bill");
+// const accountRoute =  require("./router/account");
+const roleRoute =  require("./role");
+const categoryRoute =  require("./category");
+const foodRoute =  require("./food");
+const billRoute =  require("./bill");
+const express =  require("express");
 
 const route = app => {
     app.use(

@@ -52,17 +52,7 @@ const foodController = {
             let totalPrice = 0;
             let totalQuantity = 0;
             const foodtmp = [];
-            // for (let i = 0; i < foods.length; i++) {
-            //   const foodId = foods[i]._id;
-            //   const food = await Food.findById(foodId);
-            //   const quantity = foods[i].quantity;
-            //   const price = food.price_food;
-            
-            //   // Cập nhật tổng tiền và số lượng
-            //   totalPrice += price * quantity;
-            //   totalQuantity += quantity;
-            // }
-
+           
             for (let i = 0; i < foods.length; i++) {
               const foodId = foods[i]._id;
               const food = await Food.findById(foodId);
@@ -92,12 +82,6 @@ const foodController = {
             savedBill.total_price = totalPrice;
             savedBill.quantity = totalQuantity;
             await savedBill.save();
-
-            // if(req.body.food){
-            //     const food = Author.findById(req.body.food);
-            //     await food.updateOne({$push: {books: savedBill._id}});
-
-            // }
         
             res.status(200).json({ message: 'Order successful!' });
           } catch (error) {

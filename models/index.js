@@ -1,5 +1,3 @@
-const mongoose = require("mongoose");
-
 const Food = require('./foods');
 const Category = require('./category');
 const Role = require('./roles');

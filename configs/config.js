@@ -1,6 +1,6 @@
 module.exports={
-    DBURL:'mongodb://127.0.0.1:27017/',
-    DBname:'NodeJSC7',
+    // DBURL:'mongodb://127.0.0.1:27017/',
+    // DBname:'NodeJSC7',
     account_collection:'Account',
     food_collection:'Food',
     role_collection: 'Role',

@@ -106,13 +106,16 @@ const accountController = {
 
     //Login account
     login: async(req, res)=>{
-      let account = await Account.findOne({ username: req.body.username, password: req.body.password});
+      try {
+        const { username, password } = req.body;
+        const account = await Account.findOne({ username, password });
         if (!account) {
-        return res.status(400).send('Thông Tin đăng Nhập Sai...!!!');
-      }else{
-        // res.json.body("Đăng Nhập Thành Công ......!!!");
-
-        return res.status(200).json("Đăng Nhập Thành Công.....!!!");
+          return res.status(400).send('Thông Tin đăng Nhập Sai...!!!!!');
+        }
+        return res.status(200).json(account);
+      } catch (error) {
+        console.log(error);
+        return res.status(500).send('Lỗi hệ thống, vui lòng thử lại sau');
       }
     }
 };

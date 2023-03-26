@@ -2,7 +2,7 @@ const {Food, Category,Bill, BillDetail, Account} = require("../models/models");
 
 const foodController = {
 
-     
+     /// ADD Food
      addFood: async(req, res)=>{
         try{
             console.log("vao Server");

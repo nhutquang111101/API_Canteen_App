@@ -1,11 +1,11 @@
-const roleController = require("../controller/roleController");
-const router = require("express").Router();
+// const roleController = require("../controller/roleController");
+// const router = require("express").Router();
 
 
 
-//add author
-router.post("/", roleController.addRole);
+// //add author
+// router.post("/", roleController.addRole);
 
-router.get("/", roleController.getAllRole);
+// router.get("/", roleController.getAllRole);
 
-module.exports = router;
+// module.exports = router;

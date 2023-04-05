@@ -1,0 +1,16 @@
+module.exports={
+    HOST:'http://127.0.0.1:3000/',
+    DB_URL:'mongodb://0.0.0.0:27017/',
+    DB_NAME: 'Canteen',
+    user_Collection:'users',
+    saltRounds:10,
+    JWT_SECRET:'123123123',
+    JWT_EXPIRE:'3d',
+    COOKIE_EXPIRE:'30',
+    SMTP_Host:'sandbox.smtp.mailtrap.io',
+    SMTP_Port:'25 or 465 or 587 or 2525',
+    SMTP_Username:'9fa9612ad7f9bb',
+    SMTP_Password:'559ec031d8b9b3',
+    SMTP_Auth:'PLAIN, LOGIN and CRAM-MD5',
+    SMTP_TLS:'Optional (STARTTLS on all ports)',
+}

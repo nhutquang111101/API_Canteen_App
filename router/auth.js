@@ -62,7 +62,7 @@ router.post('/forgotpassword',
     try {
       const result = await models.ForgotPassword(req.body);
       if(!result){
-        handleresult.showResult(res, 200, false, {data: "email khong ton tai"});
+        handleresult.showResult(res, 200, false, {data: "email không tồn tại"});
       }
       handleresult.showResult(res, 200, true, {data: result});
     } catch (error) {

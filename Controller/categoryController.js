@@ -2,7 +2,6 @@ const {Category, Food } = require("../models/models");
 
 const categoryController = {
 
-     //Add Role
      addCategory: async(req, res)=>{
         try{
             console.log("vao Server");

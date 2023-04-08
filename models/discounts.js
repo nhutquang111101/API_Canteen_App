@@ -3,7 +3,7 @@ const config = require('../configs/config');
 
 const discountSchema = new mongoose.Schema(
     {
-        nae_discount: {
+        name_discount: {
             type: String,
             require: true
         },

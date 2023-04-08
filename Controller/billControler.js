@@ -1,4 +1,4 @@
-const {Food,Bill, BillDetail } = require("../models");
+const {Food,Bill, BillDetail } = require("../models/models");
 
 const billController = {
   printBill: async (req, res) => {

@@ -6,7 +6,7 @@ var bodyParser = require("body-parser");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
 
-const route = require("./router");
+const route = require("./routes");
 
 dotenv.config();
 //connect DATABASE

@@ -71,6 +71,7 @@ describe('addFood', () => {
       'Gia Lon Hon 0'
     )
 
+    
     expect(foodList).toHaveLength(0)
   })
 

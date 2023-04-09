@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "jest": "^29.5.0"
+  },
+  "name": "testci",
+  "description": "<h2>Huỳnh Nhựt Quang</h2>",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nhutquang111101/testCI.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nhutquang111101/testCI/issues"
+  },
+  "homepage": "https://github.com/nhutquang111101/testCI#readme"
+}

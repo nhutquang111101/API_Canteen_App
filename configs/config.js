@@ -1,6 +1,8 @@
+const dotenv = require("dotenv");
+dotenv.config();
+
 module.exports={
-    // DBURL:'mongodb://127.0.0.1:27017/',
-    // DBname:'NodeJSC7',
+    DBURL:(process.env.MONGODB_URL),
     account_collection:'Account',
     food_collection:'Food',
     role_collection: 'Role',

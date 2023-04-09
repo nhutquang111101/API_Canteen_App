@@ -1,17 +1,34 @@
-const mongoose = require('mongoose');
-const config = require('../configs/config');
+const {Category, Food } = require("../schemas");
 
-const categorySchema = new mongoose.Schema({
-    name: {
-        type: String,
-        require:true
-    },
-    foods:[
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Food"
+const category = {
+
+     //Add Role
+     addCategory: async(req, res)=>{
+        try{
+            console.log("vao Server");
+            const newCate = new Category(req.body);
+            console.log(newCate);
+            const saveCategory = await newCate.save();
+            res.status(200).json(saveCategory);
+        }catch(err){
+            res.status(500).json(err);
+            console.log(""+err);
         }
-    ],
-});
+        // res.status(200).json(req.body);
+    },
 
-module.exports = mongoose.model(config.category_collection, categorySchema);
+    //get all author controller
+    getAllCategory: async(req, res)=>{
+        try{
+            const categorys = await Category.find();
+            res.status(200).json(categorys);
+        }
+        catch(err){
+            res.status(500).json(err);
+        }
+    },
+
+
+};
+
+module.exports = category;

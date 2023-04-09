@@ -1,30 +1,36 @@
-const mongoose = require('mongoose');
-const config = require('../configs/config');
+const {Food,Bill, BillDetail } = require("../schemas");
 
-const billSchema = new mongoose.Schema({
-    total_price: {
-        type: Number,
-        require:true
+const bills = {
+  printBill: async (req, res) => {
+    try {
+      const billId = req.params.id;
+      console.log(billId);
+
+      const billdetail = await BillDetail.findOne({
+        id_bill: billId
+      }).populate(
+        'Foods',
+      ).populate({
+        path: "id_bill",
+        populate: "account"
+      });
+      let output = {
+        fullname: billdetail.id_bill.account.fullname,
+        foodlist: billdetail.Foods
+      };
+
+      res.status(200).json(output);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Server error' });
+    }
+  },
+
+    getdetail: async(req, res)=>{
+      try{
+
+      }catch(err){}
     },
-    quantity: { type: Number, required: true },
-    create_date: { type: Date, default: Date.now },
-    note: { type: String },
-    account:
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Account"
-        },
-    discounts: [
-        {
-         type: mongoose.Schema.Types.ObjectId, 
-         ref: 'Discount' }
-    ],
-    billdetail: [
-        {
-         type: mongoose.Schema.Types.ObjectId, 
-         ref: 'BillDetail' 
-        }
-    ],
-});
+};
 
-module.exports = mongoose.model(config.bill_collection, billSchema);
+module.exports = bills;

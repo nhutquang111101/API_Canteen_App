@@ -1,26 +1,9 @@
-const Food = require('./foods');
-const Category = require('./category');
-const Role = require('./roles');
-const Account = require('./accounts');
-const Bill = require('./bills');
-const BillDetail = require('./billDetails');
-const Discount = require('./discounts');
+const foods = require('./foods');
+const category = require('./category');
+const roles = require('./roles');
+const auth = require('./auth');
+const bills = require('./bills');
+const billDetails = require('./billDetails');
+// const Discount = require('./discounts');
 
-module.exports = {Food, Category, Role, Account, Bill, BillDetail, Discount};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-const Discount = mongoose.model("Discount", discountSchema);
-
-module.exports = {Food, Category, Role, Account, Bill, BillDetail, Discount};
+module.exports = {foods, category, roles, auth, bills, billDetails};

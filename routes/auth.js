@@ -110,6 +110,14 @@ PassUpdateRules(), PassValidate, async (req,res,next) => {
     }
 });
 
+router.get('/me', protectMiddleware.protect, async function (req, res, next) {
+  try {
+    handleResult.showResult(res, 200, true, req.account);
+  } catch (error) {
+    handleResult.showResult(res, 400, false, error);
+  }
+});
+
 module.exports = router;
 function saveCookieResponse(res, StatusCode, token) {
     const option = {

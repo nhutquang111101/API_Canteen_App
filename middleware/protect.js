@@ -32,6 +32,9 @@ module.exports = {
             if(!role.includes(req.account.role.toString())){
                 return handleResult.showResult(res, 400, false, 'Ban khong co quyen truy cap');
             }
+            if(!req.account.isActive){
+                return handleResult.showResult(res, 400, false, 'Tai khoan khong ton tai');
+            }
             next();
         }
     }

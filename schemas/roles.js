@@ -10,6 +10,10 @@ const roleSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Account"
     }],
+    isActive: {
+        type: Boolean,
+        default: true
+    }
 });
 
 module.exports = mongoose.model(config.role_collection, roleSchema);

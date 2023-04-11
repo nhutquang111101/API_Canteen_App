@@ -1,12 +1,11 @@
 var createError = require('http-errors');
 const express =  require("express");
 var path = require('path');
-var cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const cors = require("cors");
-const app = express();
 const mongoose = require("mongoose");
-var bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
 const morgan = require("morgan");
 var config = require('./configs/config');
 var helmet  = require('helmet');
@@ -14,15 +13,7 @@ var xss = require('xss-clean');
 var rateLimit = require('express-rate-limit');
 
 const indexRouter = require("./routes");
-app.use('/api/v1', indexRouter);
 
-//connect DATABASE
-mongoose.connect(config.DBURL);
-mongoose.connection.once('open',()=>{
-  console.log('Connection successful!');
-}).on('error',()=>{
-  console.log('Fail!');
-});
 
 const limiter = rateLimit({
 	windowMs: 15 * 60 * 1000, // 15 minutes
@@ -31,7 +22,10 @@ const limiter = rateLimit({
 	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 })
 
-app.use('/api/v1/auth/login',limiter)
+const app = express();
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -43,9 +37,17 @@ app.use(xss());
 app.use(cors());
 
 app.use(bodyParser.json({limit: "50mb"}));
-app.use(cors());
 app.use(morgan("common"));
 
+app.use('/api/v1/auth/login',limiter)
+//connect DATABASE
+mongoose.connect(config.DBURL);
+mongoose.connection.once('open',()=>{
+  console.log('Connection successful!');
+}).on('error',()=>{
+  console.log('Fail!');
+});
+app.use('/api/v1', indexRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -60,10 +62,6 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
-});
-
-app.listen(8000, ()=>{
-    console.log("Server is Running...");
 });
 
 module.exports = app;

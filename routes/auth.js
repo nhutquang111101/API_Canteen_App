@@ -76,7 +76,7 @@ router.post('/forgot-password',
     try {
       const result = await auth.ForgotPassword(req.body);
       if(!result){
-        handleResult.showResult(res, 200, false, {data: "email khong ton tai"});
+        handleResult.showResult(res, 400, false, {data: "email khong ton tai"});
       } else 
           handleResult.showResult(res, 200, true, {data: result});
     } catch (error) {

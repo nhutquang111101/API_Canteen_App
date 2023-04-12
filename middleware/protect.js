@@ -15,7 +15,7 @@ module.exports = {
                 token = req.cookies.token;
         }
         if (token === 'none' || !token) {
-            return handleResult.showResult(res, 200, false, 'Vui long dang nhap');
+            return handleResult.showResult(res, 400, false, 'Vui long dang nhap');
         }
 
         try {

@@ -23,8 +23,8 @@ const auth = {
 
       // //save acc
       let newAcc =  new Account(item);
-      await newAcc.save();
       const otp = newAcc.identity();
+      await newAcc.save();
       // // Gửi email xác thực OTP đến email của người dùng
       const message = `
           <!DOCTYPE html>
@@ -114,6 +114,7 @@ const auth = {
   confirmOTP: async (otp) => {
     // Tìm người dùng bằng mã xác thực OTP
     const verificationCode = crypto.createHash('sha256').update(otp).digest('hex');
+    console.log(verificationCode);
     const account = await Account.findOne({
       verificationCode: verificationCode,
       resetPassTokenExp: { $gt: Date.now() }

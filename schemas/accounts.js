@@ -46,7 +46,7 @@ const accountSchema = new mongoose.Schema({
      },
     verificationCode: { 
         type: String,
-        default: null 
+        default: null
     },
     role:[{
         type: mongoose.Schema.Types.ObjectId,
@@ -99,6 +99,7 @@ accountSchema.methods.identity = function () {
     const otp =  Math.floor(Math.random() * 1000000).toString();
 	this.verificationCode = crypto.createHash('sha256').update(otp).digest('hex');
 	this.resetPassTokenExp = Date.now()+2*60*1000; //2 minutes
+    console.log('OTP: ' + otp);
 	return otp;
 }
 

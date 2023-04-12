@@ -3,7 +3,8 @@ const {Role, Account, } = require("../schemas");
 
 const roles = {
      addRole: async(item) => {
-        return await (new Role(item.body)).save();
+        let tmp = {name_role: item.name_role, isActive: true};
+        return await (new Role(tmp)).save();
     },
     getAllRole: async() => {
         return await Role.find({}).exec();

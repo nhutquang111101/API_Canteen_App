@@ -7,13 +7,13 @@ const config = require('../configs/config');
 var {Rules,validate} = require('../validator/foods');
 // const session = require('express-session');
 
-router.post('/add', protectMiddleware.protect, protectMiddleware.authorize(config.role_user), async function(req, res, next) {
+router.post('/create-bill', protectMiddleware.protect, protectMiddleware.authorize(config.role_user), async function(req, res, next) {
     try {
-        var body = req.body;
-        var account = req.account;
-        console.log(body)
         var list = await models.createBill({id: req.account._id, data: req.body});
-        handleresult.showResult(res, 200, true, list);
+        if (!list) {
+          handleresult.showResult(res, 400, false, "Mua that bai");
+        } else
+          handleresult.showResult(res, 200, true, 'Mua thanh cong');
     } catch (error) {
         handleresult.showResult(res, 400, false, error);
     }

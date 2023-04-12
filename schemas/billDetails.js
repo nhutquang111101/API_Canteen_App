@@ -3,8 +3,8 @@ const config = require('../configs/config');
 
 const billDetailSchema = new mongoose.Schema({
     Foods: [{
-        idfood: { type: mongoose.Schema.Types.ObjectId, ref: 'Food', required: true },
-        namefood:{type: String},
+        idFood: { type: mongoose.Schema.Types.ObjectId, ref: 'Food', required: true },
+        nameFood:{type: String},
         priceFood: {type:Number},
         quantity: {type: Number}
     }],

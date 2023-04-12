@@ -44,7 +44,7 @@ app.use(cors());
 app.use(bodyParser.json({limit: "50mb"}));
 app.use(morgan("common"));
 
-// app.use('/api/v1/auth/login',limiter)
+app.use('/api/v1/auth/login',limiter)
 //connect DATABASE
 mongoose.connect(config.DBURL);
 mongoose.connection.once('open',()=>{

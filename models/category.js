@@ -1,34 +1,38 @@
-const {Category, Food } = require("../schemas");
-
-const category = {
-
-     //Add Role
-     addCategory: async(req, res)=>{
-        try{
-            console.log("vao Server");
-            const newCate = new Category(req.body);
-            console.log(newCate);
-            const saveCategory = await newCate.save();
-            res.status(200).json(saveCategory);
-        }catch(err){
-            res.status(500).json(err);
-            console.log(""+err);
-        }
-        // res.status(200).json(req.body);
-    },
-
-    //get all author controller
-    getAllCategory: async(req, res)=>{
-        try{
-            const categorys = await Category.find();
-            res.status(200).json(categorys);
-        }
-        catch(err){
-            res.status(500).json(err);
-        }
-    },
+const category = require('../schemas/category');
 
 
+module.exports = {
+    addCate: async (item)=>{
+      var newItem = new category(item);
+      if(newItem){
+        console.log("Them Thanh Cong");
+      }
+      else{
+        console.log("Khong them do");
+      }
+      return (newItem).save();
+  },
+
+  getAllcate:async ()=>{
+    return await category.find({}).exec();
+  },
+  getcateIsActive:async ()=>{
+    return await category.find({isActive: true}).exec();
+  },
+
+  getCategoryById:async (id)=>{
+    return await category.findById(id).exec();
+  },
+
+  editAnCategory: async (params)=>{// params.id params.update
+    return await category.findByIdAndUpdate(params.id,params.update,{new:true});
+  },
+  
+  deleteAnCategory: async (params)=>{// params.id params.update
+    return await category.findByIdAndUpdate(params.id,params.update,{new:true});
+  },
+
+  deleteCategoryInTrash:async(id)=>{
+    return await category.findByIdAndDelete(id);
+  }
 };
-
-module.exports = category;

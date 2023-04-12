@@ -1,17 +1,8 @@
-const mongoose = require('mongoose');
-const config = require('../configs/config');
-
-const categorySchema = new mongoose.Schema({
-    name: {
-        type: String,
-        require:true
-    },
-    foods:[
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Food"
-        }
-    ],
+let mongoose = require('mongoose');
+let configs = require('../configs/config');
+let cateSchema = new mongoose.Schema({
+    // _id: String,
+    name_cate: String,
+    isActive: Boolean
 });
-
-module.exports = mongoose.model(config.category_collection, categorySchema);
+module.exports = mongoose.model(configs.category_collection, cateSchema);

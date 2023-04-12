@@ -5,6 +5,7 @@ const categoryRoute =  require("./category");
 const foodRoute =  require("./food");
 const billRoute =  require("./bill");
 const accountRoute = require("./account");
+const cartRoute =  require("./cart");
 
 var express = require('express');
 var router = express.Router();
@@ -19,6 +20,7 @@ router.use("/category", categoryRoute);
 router.use("/food", foodRoute);
 router.use("/bill", billRoute);
 router.use("/account", accountRoute);
+router.use("/cart", cartRoute);
 
 
 module.exports = router;

@@ -1,36 +1,26 @@
-const {Food,Bill, BillDetail } = require("../schemas");
+const Bill = require('../schemas/bills');
 
-const bills = {
-  printBill: async (req, res) => {
-    try {
-      const billId = req.params.id;
-      console.log(billId);
+module.exports = {
+    createBill: async (item)=>{
+      const {id, date, active, total} = newBill;
+      var bill = new Bill(newBill);
+      newBill.id = item.id;
+      newBill.total = item.total;
+      newBill.date = item.date;
+      newBill.id = item.id;
+      console.log(bill);
+      return (bill).save();
+     },
 
-      const billdetail = await BillDetail.findOne({
-        id_bill: billId
-      }).populate(
-        'Foods',
-      ).populate({
-        path: "id_bill",
-        populate: "account"
-      });
-      let output = {
-        fullname: billdetail.id_bill.account.fullname,
-        foodlist: billdetail.Foods
-      };
+     editUpdate: async (params)=>{// params.id params.update
+        return await Bill.findByIdAndUpdate(params.id,params.update,{new:true});
+      },
 
-      res.status(200).json(output);
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Server error' });
-    }
-  },
+      getByCusId: async(id)=>{
 
-    getdetail: async(req, res)=>{
-      try{
+        return await Bill.find({
+          customer_id: id
+        }).exec();
+      },
 
-      }catch(err){}
-    },
-};
-
-module.exports = bills;
+    };

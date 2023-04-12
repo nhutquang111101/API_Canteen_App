@@ -8,6 +8,7 @@ module.exports={
     food_collection:'Food',
     role_collection: 'Role',
     category_collection:'Category',
+    cart_collection: 'Cart',
     bill_collection:'Bill',
     billDetail_collection:'BillDetail',
     discount_collection:'Discount',

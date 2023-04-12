@@ -24,6 +24,11 @@ const limiter = rateLimit({
 
 const app = express();
 
+app.use(
+  "/uploads",
+  express.static(path.join(__dirname, "uploads"))
+);
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -39,7 +44,7 @@ app.use(cors());
 app.use(bodyParser.json({limit: "50mb"}));
 app.use(morgan("common"));
 
-app.use('/api/v1/auth/login',limiter)
+// app.use('/api/v1/auth/login',limiter)
 //connect DATABASE
 mongoose.connect(config.DBURL);
 mongoose.connection.once('open',()=>{
@@ -47,6 +52,9 @@ mongoose.connection.once('open',()=>{
 }).on('error',()=>{
   console.log('Fail!');
 });
+
+
+
 app.use('/api/v1', indexRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
